@@ -4,8 +4,10 @@ import math
 from yt_dlp import YoutubeDL
 from pathlib import Path
 
+from bootstrap import Bootstrap
 from setting import DownloadSetting
 from downloader import Downloader
+
 
 ASSET_VIDEO_PATH = "assets/video"
 ASSET_AUDIO_PATH = "assets/audio"
@@ -41,6 +43,11 @@ def download_youtube_audio(url: str, filename: str) -> None:
 
 
 if __name__ == '__main__':
+    command = Bootstrap.run()
+
+    if command == 'exit':
+        exit(0)
+
     download_setting = DownloadSetting()
     downloader = Downloader()
 
